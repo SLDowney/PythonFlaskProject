@@ -7,7 +7,18 @@
 {% block body %} 
     <h2>{{ headline }}</h2>
 
-    <p>Lorem Ipsum htgouesbfvdsbifn fjkds bfbsd knvdsjb jkfanbjvhbdskjf</p>
+    <div id="all_items">
+        <form action="{{ url_for('deleteitem') }}" method="POST">
+            <label class="labels" for="items">Choose an Item to Delete from the Collection:</label>
+            <select name="items" id="items">
+                {% for item in item_titles %}
+                    item1
+                   <option value="{{ loop.index }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
-    
 {% endblock %}

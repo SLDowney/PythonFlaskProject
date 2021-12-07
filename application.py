@@ -31,11 +31,16 @@ def display():
     return render_template("display.html", headline=headline, images=images)
 
 
-@app.route("/additem", methods=["GET", "POST"])
+@app.route("/additem")
 def additem():
     headline = "Choose a file to upload to the collection:"
+    return render_template("additem.html", headline=headline)
+
+
+@app.route("/additem", methods=["GET", "POST"])
+def addItemToCollection():
+    headline = "Choose a file to upload to the collection:"
     if request.method == 'POST':
-        form = request.form.get("form")
         uploaded_file = request.files["item_picture"]
         filename = secure_filename(uploaded_file.filename)
         if filename != '':
@@ -44,7 +49,6 @@ def additem():
                 abort(400)
             uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
         try:
-            picture = request.form['item_picture']
             title = request.form['title']
             author = request.form['author']
             series = request.form['series']
@@ -52,21 +56,50 @@ def additem():
             with closing(conn.cursor()) as c:
                 query = '''INSERT INTO Collection (item_picture,item_title,item_author,item_series)
                             VALUES(?, ?, ?, ?)'''
-                c.execute(query, (picture, title, author, series))
-
-                c.commit()
+                c.execute(query, (filename, title, author, series))
+                conn.commit()
                 headline = "success!!"
         except sqlite3.OperationalError as e:
             print(e)
             headline = "error in insert operation"
         return render_template("additem.html", headline=headline)
-    elif request.method == 'GET':
-        return render_template("additem.html", headline=headline)
 
-@app.route("/deleteitem")
+
+# @app.route("/deleteitem")
+# def deleteitem():
+#     headline = "File Successfully Deleted!"
+#     return render_template("deleteitem.html", headline=headline)
+#
+
+@app.route("/deleteitem", methods=["GET", "POST"])
 def deleteitem():
     headline = "This is the Delete Item Page!"
-    return render_template("deleteitem.html", headline=headline)
+    with closing(conn.cursor()) as c:
+        query = '''SELECT item_title FROM Collection'''
+        c.execute(query)
+        items = c.fetchall()
+        item_titles = []
+        for item in items:
+            item_titles.append(item)
+    if request.method == 'POST':
+        itemToDelete = int(request.form['items'])
+        i = 0
+        while i < len(item_titles):
+            if itemToDelete == item[2:-3]:
+                try:
+                    with closing(conn.cursor()) as c:
+                        query = '''DELETE FROM Collection
+                                    WHERE item_title = (?)'''
+                        c.execute(query, (itemToDelete,))
+                        conn.commit()
+                        headline = "success!!"
+                except sqlite3.OperationalError as e:
+                    print(e)
+                    headline = "error in insert operation"
+            i = i + 1
+
+        # title = request.form['title']
+    return render_template("deleteitem.html", headline=headline, item_titles=item_titles)
 
 
 if __name__ == "__main__":

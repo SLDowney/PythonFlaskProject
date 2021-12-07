@@ -27,11 +27,10 @@ h1 {
 h2 {
     font-family: 'Courier New', Courier, monospace;
     margin: 20px;
-    color:rgb(255, 0, 106)
+    color:rgb(255, 0, 106);
 }
 h3{
-    font-family: fantasy;
-    font-weight: lighter;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 #form {
@@ -53,6 +52,15 @@ h3{
     width: 300px;
     height: auto;
   }
+
+.labels {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 20px;
+}
+
+#all_items {
+
+}
 
 /*#book1 {*/
 /*    display: flex;*/
