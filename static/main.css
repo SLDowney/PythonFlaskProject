@@ -9,8 +9,8 @@ a {
     font-size: 200%;
     color:rgb(255, 94, 0);
     font-variant: small-caps;
-    margin: 0px 20px 20px 20px;
-    padding: 0px 20px 20px 20px;
+    margin: 0 20px 20px 20px;
+    padding: 0 20px 20px 20px;
 }
 
 body {
@@ -27,7 +27,7 @@ h1 {
 h2 {
     font-family: 'Courier New', Courier, monospace;
     margin: 20px;
-    color:rgb(255, 0, 106, 0.5)
+    color:rgb(255, 0, 106)
 }
 h3{
     font-family: fantasy;
@@ -37,30 +37,35 @@ h3{
 #form {
     margin: 30px;
 }
-
-#books {
+#books-overall {
     display: flex;
-    text-align: center;
     justify-content: center;
 }
 
+#books {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+}
+
 #books img {
-    max-width: 300px;
+    width: 300px;
     height: auto;
   }
 
-#book1 {
-    display: table-column;
-    padding: 50px;
-    
-}
+/*#book1 {*/
+/*    display: flex;*/
+/*    padding: 50px;*/
+/*    */
+/*}*/
 
-#book2 {
-    display: table-column;
-    padding: 50px;
-}
+/*#book2 {*/
+/*    display: flex;*/
+/*    padding: 50px;*/
+/*}*/
 
-#book3 {
-    display: table-column;
-    padding: 50px;
-}
+/*#book3 {*/
+/*    display: flex;*/
+/*    padding: 50px;*/
+/*}*/

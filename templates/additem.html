@@ -12,9 +12,22 @@
             </h2>
         {% endif %}
 
-    <form id = "form" action="{{ url_for('success') }}" method="post">
-        <input type="text" name="name" placeholder="Enter Your Name">
+    <form id = "form" action="{{ url_for('additem') }}" method="POST" enctype="multipart/form-data">
+
+        <label id="item_picture_label" for="item_picture">Book Cover Image:</label>
+        <input type="file" id="item_picture" name="item_picture" accept=".png, .jfif, .jpg, .jpeg" required>
+
+        <label id="item_title_label" for="title">Book Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter Book Title" required>
+
+        <label id="item_author_label" for="author">Book Author:</label>
+            <input type="text" id="author" name="author" placeholder="Enter Book Author" required>
+
+        <label id="item_series_label" for="series">Book Series:</label>
+            <input type="text" id="series" name="series" placeholder="Enter Book Series" required>
+
         <button>Submit</button>
+
     </form>
 
     

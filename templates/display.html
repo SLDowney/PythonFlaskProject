@@ -7,11 +7,15 @@
 {% block body %} 
     <h2>{{ headline }}</h2>
 
-    <div id="books">
+    <div id="books-overall">
         {% for image in images %}
-        <img src ="static/images/{{image[0]}}">
-        <h3>{{image[1]}}</h3>
+            <div id="books">
+            <img src ='{{ url_for("static", filename="images/" + image[0] )}}'>
+            <h3>{{image[1]}}</h3>
+            <h3>{{image[2]}}</h3>
+            <h3>{{image[3]}}</h3>
         <br/>
+            </div>
         {% endfor %}   
         
         <!-- <div id="book1">
