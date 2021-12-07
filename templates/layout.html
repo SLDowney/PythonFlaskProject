@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Collection!</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+</head>
+<body>
+    <h1>{% block heading %}{% endblock %}</h1>
+    <div id="nav">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('display') }}">Display</a>
+        <a href="{{ url_for('additem') }}">Add Item</a>
+        <a href="{{ url_for('deleteitem') }}">Delete Item</a>
+    </div>
+    {% block body %}
+    {% endblock %}
+</body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='javascript.js') }}"> </script> 
+</html>
