@@ -9,13 +9,11 @@
 
     <div id="all_items">
         <form action="{{ url_for('deleteitem') }}" method="POST">
-            <label class="labels" for="items">Choose an Item to Delete from the Collection:</label>
-            <select name="items" id="items">
                 {% for item in item_titles %}
-                    item1
-                   <option value="{{ loop.index }}">{{ item }}</option>
+                   <input type="radio" id="item" name="item"
+                          value="{{item[4]}}" class="items">
+                   <label for="item" class="items">{{item[1]}}</label><br>
                 {% endfor %}
-            </select>
             <br/>
             <input type="submit" value="Submit">
         </form>

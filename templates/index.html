@@ -5,8 +5,22 @@
 {% endblock %}
 
 {% block body %} 
-    <h2>{{ headline }}</h2>
-    <p>Lorem Ipsum htgouesbfvdsbifn fjkds bfbsd knvdsjb jkfanbjvhbdskjf</p>
+    <div id="nav">
+        <h3>*</h3>
+        <h3>*</h3>
+        <h3>*</h3>
+        <h3>*</h3>
+    </div>
+    <h2>Welcome to you personalized collection webpage! Here you can add new items
+    to your collection, delete the ones you don't want, or just stare lovingly
+    at your collection in a way that is definitely not creepy! Have fun!!</h2>
 
-    
+    {% for image in images %}
+        <div id="books-overall" class="row">
+            <div id="book_image" class="column">
+                <img src ='{{ url_for("static", filename="images/" + image[0] )}}' alt="book cover">
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}
