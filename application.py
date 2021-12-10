@@ -1,12 +1,14 @@
+import random
 import sqlite3
 from contextlib import closing
-from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, abort, redirect
 import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config["UPLOAD_PATH"] = "static/images"
 app.config["UPLOAD_EXTENSIONS"] = ['.jpg', '.png', '.jfif', '.jpeg']
+app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024
 
 conn = sqlite3.connect("Collection.db", check_same_thread=False)
 
@@ -17,11 +19,12 @@ def index():
     with closing(conn.cursor()) as c:
         query = '''Select * From Collection'''
         c.execute(query)
-        results = c.fetchall()
-        images = []
-        for image in images:
-            images.append((image[0], image[1], image[2], image[3]))
-    return render_template("index.html", headline=headline)
+        items = c.fetchall()
+        itemList = []
+        for item in items:
+            itemList.append(item)
+    itemToShow = random.choice(itemList)
+    return render_template("index.html", headline=headline, itemToShow=itemToShow)
 
 
 @app.route("/display")

@@ -15,10 +15,12 @@ a {
 }
 
 body {
+    background-image: url('/static/background.png');
+    box-shadow: inset 0 0 0 500px rgb(255, 255, 255, 0.7);
     border: 15px dashed rgb(0, 102, 189, 0.5);
-    margin: 20px 20px 20px 20px;
+    margin: 20px 20px 20px 25%;
     max-width: 1000px;
-    position: center;
+
 }
 
 h1 {
@@ -32,8 +34,9 @@ h1 {
 h2 {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    margin: 30px 0 30px 0;
+    margin: 30px 0 30px 15%;
     color: rgb(0, 102, 189);
+    max-width: 70%;
 }
 
 h3{
@@ -69,13 +72,13 @@ p {
     height: auto;
 }
 
-#book_picture {
+#book_image {
     float: right;
-    padding: 00px;
+    margin: 0 0 20px 0;
 }
 
 #book_info {
-        margin-top: -20px;
+    margin-top: -20px;
 }
 
 img {
@@ -118,6 +121,33 @@ input[type="submit"] {
     margin-left: 25%;
     margin-bottom: 5%;
 }
+
+#randomize {
+    margin: 0 0 2% 42%;
+}
+
+#index_book {
+    justify-content: center;
+}
+
+#book_cover {
+    margin: 0 0 5% 35%;
+}
+
+#book_details {
+    text-align: center;
+}
+
+span {
+    font-family: 'Arial', Helvetica, sans-serif;
+    color: #9C1A1C;
+    font-size: 100%;
+    margin-left: 50%;
+}
+
+/*#image_span {*/
+/*    margin-left: -75px;*/
+/*}*/
 
 @media only screen and (max-width: 600px) {
     #book_picture {

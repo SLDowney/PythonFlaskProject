@@ -5,22 +5,22 @@
 {% endblock %}
 
 {% block body %} 
-    <div id="nav">
-        <h3>*</h3>
-        <h3>*</h3>
-        <h3>*</h3>
-        <h3>*</h3>
-    </div>
-    <h2>Welcome to you personalized collection webpage! Here you can add new items
-    to your collection, delete the ones you don't want, or just stare lovingly
-    at your collection in a way that is definitely not creepy! Have fun!!</h2>
 
-    {% for image in images %}
-        <div id="books-overall" class="row">
-            <div id="book_image" class="column">
-                <img src ='{{ url_for("static", filename="images/" + image[0] )}}' alt="book cover">
-            </div>
+    <h2>Welcome to you personalized collection webpage! Here you can add new items,
+        delete the ones you don't want, or just stare lovingly at your collection in
+        a way that is definitely not creepy! Have fun!!</h2>
+
+    <a href='{{ url_for("index") }}'><button id="randomize">RANDOMIZE !</button></a>
+    <div id="index_book"></div>
+        <div id="book_details">
+            <p>{{itemToShow[1]}}</p>
+            <p>{{itemToShow[2]}}</p>
+            <p>{{itemToShow[3]}}</p>
         </div>
-    {% endfor %}
+        <div id="book_cover">
+            <img src ='{{ url_for("static", filename="images/" + itemToShow[0] )}}' alt="book cover">
+        </div>
+    </div>
+
 
 {% endblock %}
